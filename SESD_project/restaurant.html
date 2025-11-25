@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spicy Bites Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <div class="nav-left">
+        <a href="hanamkonda.html"><img src="assets/images/logo.jpg" class="logo" alt="Zomato Clone" /></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Section -->
+  <section class="container section">
+    <h2 class="section-title">Spicy Bites Menu</h2>
+    <div class="grid cards-2-sm" id="menu">
+      <div class="menu-card">
+        <h3>Chicken Biryani</h3>
+        <p class="muted">₹180</p>
+        <button class="btn-add" onclick="addToCart('Chicken Biryani', 180)">Add</button>
+      </div>
+      <div class="menu-card">
+        <h3>Paneer Butter Masala</h3>
+        <p class="muted">₹160</p>
+        <button class="btn-add" onclick="addToCart('Paneer Butter Masala', 160)">Add</button>
+      </div>
+      <div class="menu-card">
+        <h3>Veg Manchurian</h3>
+        <p class="muted">₹140</p>
+        <button class="btn-add" onclick="addToCart('Veg Manchurian', 140)">Add</button>
+      </div>
+      <div class="menu-card">
+        <h3>Chilli Chicken</h3>
+        <p class="muted">₹190</p>
+        <button class="btn-add" onclick="addToCart('Chilli Chicken', 190)">Add</button>
+      </div>
+    </div>
+
+    <!-- Cart Summary -->
+    <div class="cart-box">
+      <h3>Your Cart</h3>
+      <ul id="cart-list"></ul>
+      <p><strong>Total:</strong> ₹<span id="cart-total">0</span></p>
+    </div>
+  </section>
+
+  <!-- Cart Script -->
+  <script>
+    let cart = [];
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cart-list');
+      const cartTotal = document.getElementById('cart-total');
+      cartList.innerHTML = '';
+      let total = 0;
+      cart.forEach(entry => {
+        const li = document.createElement('li');
+        li.textContent = `${entry.item} - ₹${entry.price}`;
+        cartList.appendChild(li);
+        total += entry.price;
+      });
+      cartTotal.textContent = total;
+    }
+  </script>
+</body>
+</html>
